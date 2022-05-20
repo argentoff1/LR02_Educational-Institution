@@ -10,22 +10,34 @@ namespace LR2
     {
         static void Main(string[] args)
         {
-            Teacher teacher = new Teacher ("Бузмэков Александр Михайлович", "Преподаватель");
-            teacher.GetFullName();
-            teacher.GetPosition();
-            Console.WriteLine();
+            PersonnelOfficer personnelOfficer = new PersonnelOfficer("Иван", "Васильевич", "Дьяков");
+            Student firstStudent = personnelOfficer.MakeStudent("Илья", "Александрович", "Иванов");
+            Student secondStudent = personnelOfficer.MakeStudent("Василий", "Иванович", "Александров");
+            Student thirdStudent = personnelOfficer.MakeStudent("Александр", "Александрович", "Судентовский");
+            Teacher teacher = personnelOfficer.MakeTeacher("Сергей", "Алексеевич", "Осокин");
 
-            PersonnelOfficer personnelOfficer = new PersonnelOfficer("Андреев Андрей Андреевич", "Кадровик");
-            personnelOfficer.GetFullName();
-            personnelOfficer.GetPosition();
-            Console.WriteLine();
+            Group group = personnelOfficer.MakeGroup();
+            group.SetTeacher(teacher);
+            teacher.Lecture = 23;
+            teacher.Lectured();
+            group.NameGroup = "2-1Г9";
+            group.AddStudent(firstStudent);
+            group.AddStudent(secondStudent);
+            group.AddStudent(thirdStudent);
 
-            Student student = new Student("МуRATов Матвей Сергеевич", "2-1П11");
-            student.GetFullName();
-            student.GetGroup();
-            Console.WriteLine();
+            Console.WriteLine(personnelOfficer.GetAllFullName());
+            Console.WriteLine(teacher.GetAllFullName());
+            Console.WriteLine(thirdStudent.GetAllFullName());
 
-
+            Console.WriteLine(thirdStudent.GetGroup());
+            Console.WriteLine(personnelOfficer.Post);
+            Console.WriteLine(teacher.Post);
+            Console.WriteLine(group.GetNumber());
+            secondStudent.Deducted();
+            Console.WriteLine(group.GetNumber());
+            Console.WriteLine(teacher.Lecture);
+            teacher.Lectured();
+            Console.WriteLine(teacher.Lecture);
         }
     }
 }

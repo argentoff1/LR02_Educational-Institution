@@ -6,17 +6,20 @@ using System.Threading.Tasks;
 
 namespace LR2
 {
-    class Student : Person
+    public class Student : Person
     {
-        public string group;
-        public Student(string fullName, string group)
+        public Student(string name, string middlename, string surname) : base(name, middlename, surname) { }
+        public Group group;
+        public bool studies = true;
+
+        public string GetGroup()
         {
-            this.fullName = fullName;
-            this.group = group;
+            return (this.group.NameGroup);
         }
-        public void GetGroup()
+        public void Deducted()
         {
-            Console.WriteLine(this.group);
+            this.studies = false;
+            group.UpData();
         }
     }
 }

@@ -6,13 +6,30 @@ using System.Threading.Tasks;
 
 namespace LR2
 {
-    class Person
+    public abstract class Person
     {
-        public string fullName;
+        private string name;
+        private string middlename;
+        private string surname;
 
-        public void GetFullName()
+        public Person(string name, string middlename, string surname)
         {
-            Console.WriteLine($"ФИО: {this.fullName}");
+            this.name = name;
+            this.surname = surname;
+            this.middlename = middlename;
+        }
+        public string GetAllFullName()
+        {
+            string[] fullName = new string[] { this.middlename, this.surname };
+            string allFullName = name;
+            foreach (string i in fullName)
+            {
+                if (i != null)
+                {
+                    allFullName = allFullName + " " + i;
+                }
+            }
+            return (allFullName);
         }
     }
 }

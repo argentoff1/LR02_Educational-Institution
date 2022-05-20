@@ -6,13 +6,21 @@ using System.Threading.Tasks;
 
 namespace LR2
 {
-    class Worker : Person
+    public abstract class Worker : Person
     {
-        public string position;
+        private string post;
 
-        public void GetPosition()
+        public Worker(string name, string middlename, string surname, string post) : base(name, middlename, surname)
         {
-            Console.WriteLine($"Должность: {this.position}");
+            this.post = post;
+        }
+
+        public string Post
+        {
+            get
+            {
+                return (this.post);
+            }
         }
     }
 }
